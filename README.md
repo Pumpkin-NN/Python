@@ -1,2 +1,1 @@
-# Tutorial_Python
-Python Training
+# Python Code
