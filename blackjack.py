@@ -54,6 +54,26 @@ def sum_cards(cards):
                 j = 1
         count = count + j
         
+    '''
+    # Another way to get the same result
+    count = 0
+    for j in count_list:
+        if j == 'JACK':
+            count = count + 10
+        elif j == 'QUEEN':
+            count = count + 10
+        elif j == 'KING':
+            count = count + 10
+        elif j == 'A':
+            if count <= 10:
+                count = count + 11
+            else:
+                count = count + 1
+        else:
+            count = count + j
+    return count
+    '''
+        
     return count
 
 if __name__ == '__main__':
