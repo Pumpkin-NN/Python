@@ -60,82 +60,91 @@ if __name__ == '__main__':
     Man = HumanPlayer(MONEY)
     Rot = ComputerDealer(MONEY)
 
-    cards_Man = []
-    cards_Rot = []
-    
-    Round = 1
-    hold = 0
-    while True: 
-        # The start of the game
-        if len(cards_Man) == 0 and len(cards_Rot) == 0:
-            cards_Man.append(Man.hit())
-            cards_Man.append(Man.hit())
+    while True:
+        cards_Man = []
+        cards_Rot = []
+        
+        Round = 1
+        hold = 0
+        
+        answer = input("Do you want to start a new game(Y/N)?\n")
+        if answer == "N":
+            break
+        elif answer == "Y":
+            while True: 
+                print("\n\n*************************************************")
+                print("The {} Round Begin!".format(Round))
+                # The start of the game
+                if len(cards_Man) == 0 and len(cards_Rot) == 0:
+                    cards_Man.append(Man.hit())
+                    cards_Man.append(Man.hit())
+                    
+                    cards_Rot.append(Rot.hit())
+                    cards_Rot.append(Rot.hit())
+                    print("\n\nThe first two cards for Man: \n{}".format(cards_Man))
+                    print("The first two cards for Rot: \n{}".format(cards_Rot))
+                # Check for the sum of the current cards from each beginning
+                if sum_cards(cards_Man) > 21:
+                    print("Human BUST!")
+                    break
+                if sum_cards(cards_Rot) > 21:
+                    print("Rot BUST!")
+                    break
+                
+                # Ask for the human player
+                while True:
+                    next_move = input("Do u want to 'HIT' or 'HOLD'?\n")
+                    if next_move == 'HIT':
+                        cards_Man.append(Man.hit())
+                        print("The human cards are: {}".format(cards_Man))
+                        break
+                    elif next_move == 'HOLD':
+                        hold = hold + 1
+                        break
+                    else:
+                        print("Please Type in 'HIT' or 'HOLD'")
+                    
+                if sum_cards(cards_Man) > 21:
+                    print("Human BUST!")
+                    break
 
-            cards_Rot.append(Rot.hit())
-            cards_Rot.append(Rot.hit())
-            print(cards_Man,cards_Rot)
-        # Check for the sum of the current cards from each beginning
-        if sum_cards(cards_Man) > 21:
-            print("Human BUST!")
-            break
-        if sum_cards(cards_Rot) > 21:
-            print("Rot BUST!")
-            break
-        
-        print("The {} Round Begin!".format(Round))
-        
-        # Ask for the human player
-        while True:
-            next_move = input("Do u want to 'hit' or 'hold'?\n")
-            if next_move == 'hit':
-                cards_Man.append(Man.hit())
-                print("The human cards are: {}".format(cards_Man))
-                break
-            elif next_move == 'hold':
-                hold = hold + 1
-                break
+                if sum_cards(cards_Rot) < 18:
+                    cards_Rot.append(Rot.hit())
+                    print("The rot cards are: {}".format(cards_Rot))
+                elif sum_cards(cards_Rot) > 21:
+                    print("Rot BUST!")
+                    break
+                else:
+                    hold = hold + 1
+
+                if hold >= 3:
+                    print("This Round ends.")
+                    break
+                
+                Round = Round + 1
+
+            if sum_cards(cards_Rot) > 21:
+                print("Human wins!")
+                Man.money = Man.money + Rot.money/2
+                Rot.money = Rot.money - Rot.money/2
+                print("The Man now have ${}".format(Man.money))
+            elif sum_cards(cards_Man) > 21:
+                print("Rot wins!")
+                Rot.money = Rot.money + Man.money/2
+                Man.money = Man.money - Man.money/2
+                print("The Rot now have ${}".format(Rot.money))
             else:
-                print("Please Type in 'hit' or 'hold'")
-             
-        if sum_cards(cards_Man) > 21:
-            print("Human BUST!")
-            break
-
-        if sum_cards(cards_Rot) < 18:
-            cards_Rot.append(Rot.hit())
-            print("The rot cards are: {}".format(cards_Rot))
-        elif sum_cards(cards_Rot) > 21:
-            print("Rot BUST!")
-            break
+                if sum_cards(cards_Rot) > sum_cards(cards_Man):
+                    print("Rot wins!")
+                    Rot.money = Rot.money + Man.money/2
+                    Man.money = Man.money - Man.money/2
+                    print("The Rot now have ${}".format(Rot.money))
+                elif sum_cards(cards_Rot) < sum_cards(cards_Man):
+                    print("Human wins!")
+                    Man.money = Man.money + Rot.money/2
+                    Rot.money = Rot.money - Rot.money/2
+                    print("The Man now have ${}".format(Man.money))
+                else:
+                    print("Tied!")
         else:
-            hold = hold + 1
-
-        if hold >= 3:
-            print("This Round ends.")
-            break
-        
-        Round = Round + 1
-
-    if sum_cards(cards_Rot) > 21:
-        print("Human wins!")
-        Man.money = Man.money + Rot.money/2
-        Rot.money = Rot.money - Rot.money/2
-        print("The Man now have ${}".format(Man.money))
-    elif sum_cards(cards_Man) > 21:
-        print("Rot wins!")
-        Rot.money = Rot.money + Man.money/2
-        Man.money = Man.money - Man.money/2
-        print("The Rot now have ${}".format(Rot.money))
-    else:
-        if sum_cards(cards_Rot) > sum_cards(cards_Man):
-            print("Rot wins!")
-            Rot.money = Rot.money + Man.money/2
-            Man.money = Man.money - Man.money/2
-            print("The Rot now have ${}".format(Rot.money))
-        elif sum_cards(cards_Rot) < sum_cards(cards_Man):
-            print("Human wins!")
-            Man.money = Man.money + Rot.money/2
-            Rot.money = Rot.money - Rot.money/2
-            print("The Man now have ${}".format(Man.money))
-        else:
-            print("Tied!")
+            print("Please Type in 'Y' or 'N'\n\n")
