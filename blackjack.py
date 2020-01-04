@@ -118,12 +118,24 @@ if __name__ == '__main__':
 
     if sum_cards(cards_Rot) > 21:
         print("Human wins!")
+        Man.money = Man.money + Rot.money/2
+        Rot.money = Rot.money - Rot.money/2
+        print("The Man now have ${}".format(Man.money))
     elif sum_cards(cards_Man) > 21:
         print("Rot wins!")
+        Rot.money = Rot.money + Man.money/2
+        Man.money = Man.money - Man.money/2
+        print("The Rot now have ${}".format(Rot.money))
     else:
         if sum_cards(cards_Rot) > sum_cards(cards_Man):
             print("Rot wins!")
+            Rot.money = Rot.money + Man.money/2
+            Man.money = Man.money - Man.money/2
+            print("The Rot now have ${}".format(Rot.money))
         elif sum_cards(cards_Rot) < sum_cards(cards_Man):
             print("Human wins!")
+            Man.money = Man.money + Rot.money/2
+            Rot.money = Rot.money - Rot.money/2
+            print("The Man now have ${}".format(Man.money))
         else:
             print("Tied!")
