@@ -1,6 +1,6 @@
 # Change Return Program
-# - The user enters a cost and then the amount of money given.
-#The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
+# The user enters a cost and then the amount of money given.
+# The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
 
 def remainder_check(r, n):
     count = 0
