@@ -35,8 +35,8 @@ def spell_number(n):
     
     def one_digit_number(n):
         print(n)
-    def two_digit_number(n):
-        if spell_number_list[0] == 'One' and n == spell_number_list[-1]:
+    def two_digit_number(t, n):
+        if spell_number_list[0] == 'One' and t == len(spell_number_list) - 1:
             if spell_number_list[-1] == 'Zero':
                 print("Ten")
             elif spell_number_list[-1] == 'One':
@@ -51,27 +51,27 @@ def spell_number(n):
                 print("Eighteen")
             else:
                 print(n+'teen')
-        elif spell_number_list[0] == 'Two' and n == spell_number_list[-1]: 
+        elif spell_number_list[0] == 'Two' and t == len(spell_number_list) - 1: 
             if spell_number_list[-1] == 'Zero':
                 print("Twenty")
             else:
                 print("Twenty-"+n)
-        elif spell_number_list[0] == 'Three' and n == spell_number_list[-1]: 
+        elif spell_number_list[0] == 'Three' and t == len(spell_number_list) - 1: 
             if spell_number_list[-1] == 'Zero':
                 print("Thirty")
             else:
                 print("Thirty-"+n)
-        elif spell_number_list[0] == 'Five' and n == spell_number_list[-1]: 
+        elif spell_number_list[0] == 'Five' and t == len(spell_number_list) - 1: 
             if spell_number_list[-1] == 'Zero':
                 print("Fifty")
             else:
                 print("Fifty-"+n)
-        elif spell_number_list[0] == 'Eight' and n == spell_number_list[-1]: 
+        elif spell_number_list[0] == 'Eight' and t == len(spell_number_list) - 1: 
             if spell_number_list[-1] == 'Zero':
                 print("Eighty")
             else:
                 print("Eighty-"+n)
-        elif n == spell_number_list[-1]:
+        elif t == len(spell_number_list) - 1:
             if spell_number_list[-1] == 'Zero':
                 print(spell_number_list[0]+"ty")
             else:
@@ -79,11 +79,11 @@ def spell_number(n):
     def three_digit_number(n):
         pass
     
-    for i in spell_number_list:
+    for k, i in enumerate(spell_number_list):
         if len(spell_number_list) == 1:
             one_digit_number(i)
         if len(spell_number_list) == 2:
-            two_digit_number(i)
+            two_digit_number(k, i)
         if len(spell_number_list) == 3:
             pass
 
@@ -95,8 +95,7 @@ def spell_number(n):
 
 
 if __name__ == '__main__':
-    # TODO dubug n = '55'
-    n = '55'
+    n = '11'
     spell_number(n)
 
 
