@@ -83,7 +83,9 @@ def spell_number(n):
             print(List[0]+"-hundred"+" and " + one_digit_number(List[-1]))
         elif t == len(List) - 1:
             print(List[0]+"-hundred"+" and ")
-            
+            two_digit_number(t-1, n, List[1:])
+    def four_digit_number(t, n, List):
+        pass
     
     for k, i in enumerate(spell_number_list):
         if len(spell_number_list) == 1:
@@ -92,8 +94,8 @@ def spell_number(n):
             two_digit_number(k, i, spell_number_list)
         if len(spell_number_list) == 3:
             three_digit_number(k, i, spell_number_list)
-            two_digit_number(k-1, i, spell_number_list[1:])
-             
+        if len(spell_number_list) == 4:
+            pass
 
 
 
