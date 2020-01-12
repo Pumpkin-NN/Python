@@ -82,7 +82,7 @@ def spell_number(n):
         elif t == len(List) - 1 and List[1] == "Zero":
             print(List[0]+"-hundred"+" and " + one_digit_number(List[-1]), end = " ")
         elif t == len(List) - 1:
-            print(List[0]+"-hundred"+" and ", end = " ")
+            print(List[0]+"-hundred"+" and", end = " ")
             two_digit_number(t-1, n, List[1:])
     def four_digit_number(t, n, List):
         if t == len(List) - 1 and List[1] == "Zero" and List[2] == "Zero" and List[-1] == "Zero":
@@ -91,10 +91,10 @@ def spell_number(n):
             if List[2] == "Zero":
                 print(List[0]+"-thousand"+" and " + one_digit_number(List[-1]), end = " ")
             else:
-                print(List[0]+"-thousand"+" and ", end = " ")
+                print(List[0]+"-thousand"+" and", end = " ")
                 two_digit_number(t-2, n, List[2:])
         elif t == len(List) - 1:
-            print(List[0]+"-thousand"+" and ", end = " ")
+            print(List[0]+"-thousand"+" and", end = " ")
             three_digit_number(t-1, n, List[1:])
     def five_digit_number(t, n, List):
         List1 = List[:2]
@@ -103,12 +103,12 @@ def spell_number(n):
             two_digit_number(t-3, List1[-1], List1)
             print("-thousand", end = " ")
             if List2[0] == 'Zero' and List2[1] == 'Zero':
-                print("and " + one_digit_number(List2[-1]), end = " ")
+                print("and" + one_digit_number(List2[-1]), end = " ")
             elif List2[0] == 'Zero':
-                print("and ", end = " ")
+                print("and", end = " ")
                 two_digit_number(t-3, List2[-1], List2[1:])
             else:
-                print("and ", end = " ")
+                print("and", end = " ")
                 three_digit_number(t-2, n, List2)
     def six_digit_number(t, n, List):
         List1 = List[:3]
@@ -122,10 +122,10 @@ def spell_number(n):
                 else:
                     print("and " + one_digit_number(List2[-1]), end = " ")
             elif List2[0] == 'Zero':
-                print("and ", end = " ")
+                print("and", end = " ")
                 two_digit_number(t-4, List2[-1], List2[1:])
             else:
-                print("and ", end = " ")
+                print("and", end = " ")
                 three_digit_number(t-3, n, List2)
     def seven_digit_number(t, n, List):
         List1 = List[:1]
@@ -137,19 +137,19 @@ def spell_number(n):
             elif List2[0] == 'Zero' and List2[1] == 'Zero' and List2[2] == 'Zero' and List2[3] == 'Zero' and List2[4] == 'Zero':
                 print("and " + one_digit_number(List2[-1]), end = " ")
             elif List2[0] == 'Zero' and List2[1] == 'Zero' and List2[2] == 'Zero' and List2[3] == 'Zero':
-                print("and ", end = " ")
+                print("and", end = " ")
                 two_digit_number(t-5, n, List2[4:])
             elif List2[0] == 'Zero' and List2[1] == 'Zero' and List2[2] == 'Zero':
-                print("and ", end = " ")
+                print("and", end = " ")
                 three_digit_number(t-4, n, List2[3:])
             elif List2[0] == 'Zero' and List2[1] == 'Zero':
-                print("and ", end = " ")
+                print("and", end = " ")
                 four_digit_number(t-3, n, List2[2:])
             elif List2[0] == 'Zero':
-                print("and ", end = " ")
+                print("and", end = " ")
                 five_digit_number(t-2, n, List2[1:])
             else:
-                print("and ", end = " ")
+                print("and", end = " ")
                 six_digit_number(t-1, n, List2)     
             
     # Spell out number names more than ten million      
@@ -189,9 +189,9 @@ def spell_number(n):
 if __name__ == '__main__':
     # n less than ten million
     n = '9999999'
-    print("\n")
+    print("Formatted Result: ")
     spell_number(n)
-    print("\n")
+    print("")
 
 
 
