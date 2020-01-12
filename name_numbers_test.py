@@ -130,7 +130,6 @@ def spell_number(n):
     def seven_digit_number(t, n, List):
         List1 = List[:1]
         List2 = List[1:]
-        print(List1, List2)
         if t == len(List) - 1:
             print(one_digit_number(List1[0])+"-million")
             if List2[0] == 'Zero' and List2[1] == 'Zero' and List2[2] == 'Zero' and List2[3] == 'Zero' and List2[4] == 'Zero' and List2[5] == 'Zero':
