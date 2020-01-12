@@ -188,6 +188,7 @@ def spell_number(n):
 
 if __name__ == '__main__':
     # n less than ten million
+    print("\nTest Result: \n")
     n = '9999999'
     spell_number(n)
 
