@@ -187,12 +187,8 @@ def spell_number(n):
         if len(spell_number_list) == 11:
             eleven_digit_number(k, i, spell_number_list)
 
-
-
-
-
 if __name__ == '__main__':
-    # At least one million
+    # n less than ten million
     n = '9999999'
     spell_number(n)
 
