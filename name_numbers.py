@@ -32,6 +32,12 @@ def spell_number(n):
     # Create a spell_number list use the list comprehension
     spell_number_list = [number_to_english(x) for x in n]
     
+    # Check if the number is negative
+    if spell_number_list[0] == None:
+        print("Negative", end = " ")
+        spell_number_list = spell_number_list[1:]
+    
+    
     # Spell out number names less than ten million
     def one_digit_number(n):
         return n
@@ -187,9 +193,10 @@ def spell_number(n):
             eleven_digit_number(k, i, spell_number_list)
 
 if __name__ == '__main__':
-    # n less than ten million
-    n = '9999999'
-    print("Formatted Result: ")
+    # n between "-9999999 ~ 9999999"
+    # Ask user to input a number (-9999999 ~ 9999999)
+    n = input("Please enter a number (-9999999 ~ 9999999): \n")
+    print("Spelled-number in English: ")
     spell_number(n)
     print("")
 
