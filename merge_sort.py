@@ -1,75 +1,79 @@
-
-
-merge_sort_list = []
-final_list = []
-def merge_sort(l):
-    def final(msl):
-        print(f'msl:{msl}')
-        for k in range(len(msl)):
-            # print(msl[k])
-            if k+1 == len(msl):
-                break
-            if msl[k] > msl[k+1]:
-                hold = msl[k]
-                msl[k] = msl[k+1]
-                msl[k+1] = hold
-                print(f'\nphase1: {msl[k],msl[k+1]}')
-                final_list.extend([msl[k],msl[k+1]])
-            else:
-                print(f'\nphase2: {msl[k],msl[k+1]}')
-                final_list.extend([msl[k],msl[k+1]]) 
-            # if msl[k] not in final_list and len(final_list) != 0:
-            #     for j in range(len(final_list)):
-            #         if msl[k] > final_list[j]:
-            #             hold = msl[k]
-            #             msl[k] = final_list[j]
-            #             final_list[j] = hold
-            #             print(f'\nphase3: {msl[k]}')
-            #             final_list.append(msl[k])
-            #         else:
-            #             print(f'\nphase4: {msl[k]}')
-            #             final_list.append(msl[k])
-                
-            # final_list.extend([msl[k],msl[k+1]])
-        # for k in range(len(msl)):
-        #     # print(f'k:{msl[k]}')
-        #     if k+1 == len(msl):
-        #         break
-        #     if msl[k] > msl[k+1]:
-        #         temp = msl[k]
-        #         msl[k] = msl[k+1]
-        #         msl[k+1] = temp
-        #         final_list.append(msl[k])
-        #         final_list.append(msl[k+1])
-        #     else:
-        #         final_list.append(msl[k])
-        #         final_list.append(msl[k+1])
-        print(f'final_list:{final_list}')
-        return final_list
+def merge_sort(L):
     
-    if len(l) == 2:
-        for i in range(len(l)):
-            if i+1 == len(l):
-                break
-            if l[i] > l[i+1]:
-                temp = l[i]
-                l[i] = l[i+1]
-                l[i+1] = temp
-                merge_sort_list.extend([l[i],l[i+1]])
-            else:
-                merge_sort_list.extend([l[i],l[i+1]])
-        print(f'merge_sort_list:{merge_sort_list}')
-        final(merge_sort_list)
-        return merge_sort_list
+#--------------------------------Divide List-------------------------------------------------------
+    # Divide List
+    Dlist = []
+    def divide_list(L):
+        # End condition
+        if len(L) == 2:
+            if L[0] > L[1]:
+                temp = L[0]
+                L[0] = L[1]
+                L[1] = temp
+            Dlist.append(L)
+            return None
         
-    m = int(len(l)/2)
-    l1 = l[:m]
-    l2 = l[m:]
-    # print(f'l1, l2:{l1, l2}')
-    return merge_sort(l1), merge_sort(l2)
+        # Divide the given list by half
+        s = len(L) // 2
+        L1 = L[:s]
+        L2 = L[s:]
+        
+        # Recursion
+        divide_list(L1)
+        divide_list(L2)
+        return Dlist
     
-
-
+    MS = divide_list(L)
+    
+#--------------------------------Merge List-------------------------------------------------------
+    # Merge List
+    Slist = []
+    Tlist = []
+    Rlist = []
+    def merge_list(MS):
+        print(len(MS))
+        for i in MS:
+            print(i)
+            for j in i:
+                print(j)
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            #     Tlist.append(j)
+            # if len(Tlist) == len(MS):
+            #     Slist.append(Tlist[:len(MS)])
+                
+            # if len(Tlist) == len(L):
+            #     Slist.append(Tlist[len(MS):])
+            #     for k in Slist:
+            #         for t in range(len(k)):
+            #             print(f't:{k[t]}')
+            #             if t+1 == len(k):
+            #                 break
+            #             if k[t] > k[t+1]:
+                            
+                    
+                    
+                    
+                    
+                    
+        # print(Slist)
+        
+    
+    merge_list(MS)
+    
+    
+    
+    return None
+    
 if __name__ == "__main__":
-    L = [2, 8, 5, 3, 9, 4, 1, 7]
+    # TODO Set as the user input
+    L = "28539417"
+    L = [int(x) for x in L]
     merge_sort(L)
