@@ -1,4 +1,4 @@
-import numpy as np
+
 import matplotlib.pyplot as plt
 
 # Prepocess the files
@@ -39,6 +39,7 @@ def frequence(contents, n):
 
 # Plot data
 def plot(l1, l2):
+    plt.figure(figsize=(9, 6))
     plt.bar(l1, l2)
     plt.xlabel('Words')
     plt.ylabel('Frequency')
@@ -47,5 +48,5 @@ def plot(l1, l2):
 # Main function
 if __name__ == "__main__":
     contents = file_handle()
-    top_frequence_words, top_frequence = frequence(contents, 20)
+    top_frequence_words, top_frequence = frequence(contents, 10)
     plot(top_frequence_words, top_frequence)
