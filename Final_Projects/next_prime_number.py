@@ -18,18 +18,27 @@ def primeNumberScale(min, max):
 
 
 def nextPrime(Flag, Scale, Fn):
+    if Fn+1 < Scale[0]:
+        print("\n\tThe number is not in the scale!\n")
+        return False
+    
     if Flag == 'Y':
         
         for num in range(len(Scale)):
             
             # Check if it is the last item in the Scale
-            if Scale[num] == Scale[-1]:
+            if Scale[num] == Scale[-1] and Fn > Scale[-1]:
                 print("There is no more prime numbers\n\n")
                 return None
             
             if Scale[num] <= Fn:
                 if Scale[num] == Fn:
-                    return Scale[num+1]
+                    if Scale[num] == Scale[-1]:
+                        print("There is no more prime numbers\n\n")
+                        return None
+                    else:
+                        NUM = Scale[num+1]
+                        return NUM
                 else:
                     continue
                 
@@ -45,7 +54,7 @@ def nextPrime(Flag, Scale, Fn):
 
 if __name__ == '__main__':
     # Define the scale
-    minimum, maximum = input("Please type in the scale, for the mini to max(format: min-max): \n").split("-")
+    minimum, maximum = input("\n\nPlease type in the scale, for the mini to max(format: min-max): \n").split("-")
     minimum, maximum = int(minimum), int(maximum)
     scale = primeNumberScale(minimum, maximum)
     
@@ -54,17 +63,27 @@ if __name__ == '__main__':
     count = 0
     while True:
         if count == 0:
-            number = int(input("Please type a number in the scale: \n"))
-            num = nextPrime('Y', scale, number)
-            print(f'\t the next prime number is:{num}')
-            
-        # Check the typo
-        while True:
-            choose = input("Find the next prime number?(Y/N)\n")
-            if choose == 'Y' or choose == 'N':
-                break
-            else:
-                print("Please type in 'Y' or 'N'\n")
+            while True:
+                number = int(input("Please type a number in the scale: "))
+                num = nextPrime('Y', scale, number)
+                if num == False:
+                    continue
+                if num == None:
+                    break
+                else:
+                    print(f'\n\t the next prime number is:{num}\n')
+                    break
+        if num == None:
+            break
+        
+        else:
+            # Check the typo
+            while True:
+                choose = input("Find the next prime number? (Y/N): ")
+                if choose == 'Y' or choose == 'N':
+                    break
+                else:
+                    print("Please type in 'Y' or 'N'\n")
         
         # choose == "Y"
         if choose == "Y":
@@ -72,7 +91,7 @@ if __name__ == '__main__':
             if num == None:
                 break
             else:
-                print(f'\t the next prime number is:{num}')
+                print(f'\n\t the next prime number is:{num}\n')
         
         # choose == "N"      
         else:
