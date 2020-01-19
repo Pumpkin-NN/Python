@@ -18,9 +18,13 @@ def primeNumberScale(min, max):
 
 
 def nextPrime(Flag, Scale, Fn):
-    if Fn+1 < Scale[0]:
-        print("\n\tThe number is not in the scale!\n")
-        return False
+    if len(Scale) == 0:
+        print("There is no more prime numbers\n\n")
+        return None
+    else:
+        if Fn+1 < Scale[0]:
+            print("\n\tThe number is not in the scale!\n")
+            return False
     
     if Flag == 'Y':
         
@@ -43,7 +47,7 @@ def nextPrime(Flag, Scale, Fn):
                     continue
                 
             else:
-                NUM = Scale[num] 
+                NUM = Scale[num]
                 return NUM
     else:
         print("End of the search")
