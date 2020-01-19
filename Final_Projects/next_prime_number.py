@@ -50,7 +50,7 @@ def nextPrime(Flag, Scale, Fn):
                 NUM = Scale[num]
                 return NUM
     else:
-        print("End of the search")
+        print("\n\t\tEnd of searching\n")
         return None
 
     return nextPrime(Flag, Scale, NUM)
