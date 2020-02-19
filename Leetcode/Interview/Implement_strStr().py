@@ -6,10 +6,8 @@ def strStr(haystack, needle):
     if len(haystack) == 0:
         return -1
     if needle in haystack:
-        print(needle)
-        for i in needle:
-            for j in haystack:
-                 
+        index = haystack.index(needle)
+        return index
     else:
         return -1
 
